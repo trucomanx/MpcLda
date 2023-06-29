@@ -1,0 +1,191 @@
+%% source:
+%% https://github.com/trucomanx/dummy-theorem-box
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dummy-theorem-box}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage{theorem}                        % 
+\RequirePackage{xcolor}                         % colors
+\RequirePackage{framed}                         % frames
+\RequirePackage{mdframed}                       % better frames
+%\RequirePackage{fancyhdr}                       % Fancy headings
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{dummy-theorem-box}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\definecolor{thmBgColor}{RGB}{250,250,250}
+%\definecolor{thmLnColor}{RGB}{200,200,200}
+
+\mdfdefinestyle{MDFStyGrayScreen}{%
+    linecolor=gray!20,
+        backgroundcolor=gray!10,
+        linewidth=1pt,
+        topline=true,
+    bottomline=true,
+    rightline=false,
+        leftline=false,
+    outerlinewidth=2pt,
+    roundcorner=0pt,
+    innertopmargin=4pt, %\baselineskip
+    innerbottommargin=4pt, %\baselineskip,
+    innerrightmargin=3pt,
+    innerleftmargin=3pt,
+        skipabove=\topskip,
+        skipbelow=\topskip,
+        nobreak=false
+        }
+
+\mdfdefinestyle{MDFStyYellowScreen}{%
+    linecolor=yellow!20,
+        backgroundcolor=yellow!10,
+        linewidth=1pt,
+        topline=true,
+    bottomline=true,
+    rightline=false,
+        leftline=false,
+    outerlinewidth=2pt,
+    roundcorner=0pt,
+    innertopmargin=4pt, %\baselineskip
+    innerbottommargin=4pt, %\baselineskip,
+    innerrightmargin=3pt,
+    innerleftmargin=3pt,
+        skipabove=\topskip,
+        skipbelow=\topskip,
+        nobreak=false
+        }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newenvironment{equationbox}%
+{
+\begin{mdframed}[style=MDFStyYellowScreen]
+}
+{
+\end{mdframed}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{myremark}{Remark}[section]
+\newenvironment{remark}
+{
+\begin{myremark}
+}
+{
+\hspace{\fill}\rule{0.5em}{0.5em}
+\end{myremark}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newtheorem{mytheorem}{Theorem}
+\newenvironment{theorem}%
+{
+\begin{mdframed}[style=MDFStyGrayScreen]
+\begin{mytheorem}
+}
+{
+\hspace{\fill}\rule{0.5em}{0.5em}
+\end{mytheorem}
+\end{mdframed}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{myexample}{Example}[section]  %\newtheorem{ambiente}{título}[numeração] 
+\newenvironment{example}%
+{
+\begin{mdframed}[style=MDFStyGrayScreen]
+\begin{myexample}
+}
+{
+\hspace{\fill}\rule{0.5em}{0.5em}
+\end{myexample}
+\end{mdframed}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{mydefinition}[mytheorem]{Definition} %\newtheorem{ambiente}{título}[numeração] 
+\newenvironment{definition}%
+{
+\begin{mdframed}[style=MDFStyGrayScreen]
+\begin{mydefinition}
+}
+{
+\hspace{\fill}\rule{0.5em}{0.5em}
+\end{mydefinition}
+\end{mdframed}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{mylemma}[mytheorem]{Lemma}
+\newenvironment{lemma}%
+{
+\begin{mdframed}[style=MDFStyGrayScreen]
+\begin{mylemma}
+}
+{
+\hspace{\fill}\rule{0.5em}{0.5em}
+\end{mylemma}
+\end{mdframed}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{mycorollary}[mytheorem]{Corollary}
+\newenvironment{corollary}%
+{
+\begin{mdframed}[style=MDFStyGrayScreen]
+\begin{mycorollary}
+}
+{
+\hspace{\fill}\rule{0.5em}{0.5em}
+\end{mycorollary}
+\end{mdframed}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{proofraw}[1][Proof]{\textbf{#1.} }{\hspace{\fill}\rule{0.5em}{0.5em}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{myconjecture}[mytheorem]{Conjecture}
+\newenvironment{conjecture}%
+{
+\begin{mdframed}[style=MDFStyGrayScreen]
+\begin{myconjecture}
+}
+{
+\hspace{\fill}\rule{0.5em}{0.5em}
+\end{myconjecture}
+\end{mdframed}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{myproposition}[mytheorem]{Proposition}
+\newenvironment{proposition}%
+{
+\begin{mdframed}[style=MDFStyGrayScreen]
+\begin{myproposition}
+}
+{
+\hspace{\fill}\rule{0.5em}{0.5em}
+\end{myproposition}
+\end{mdframed}
+}
+

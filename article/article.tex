@@ -1,0 +1,49 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{comment}
+\usepackage{amssymb,amsmath}
+
+\usepackage{packages/math-macros}
+
+\usepackage{lipsum}
+
+\usepackage{url} 
+\usepackage{hyperref}
+
+\usepackage[sorting=none]{biblatex} %Imports biblatex package
+\addbibresource{referencias.bib} %Import the bibliography file
+
+%% local packages
+\usepackage{dummy-theorem-box} 
+%\input{structure/structure}
+
+
+%opening
+\title{Linear discriminant analysis with $M$ principal components}
+\author{Fernando Pujaico Rivera, Paulo Sergio Rodrigues}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+In the context of machine learning,
+\end{abstract}
+
+\input{sections/intro}
+
+
+\medskip
+\printbibliography 
+
+
+\end{document}
