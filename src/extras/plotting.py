@@ -32,16 +32,17 @@ def create_frame2(  x1,x2,mu1,mu2,Vecs,Vals,
 
     scat=ax.scatter3D(x2[0,:], x2[1,:], x2[2,:], c="b");
 
-    mu=(mu1+mu2)/2.0;
+    mu=((mu1+mu2)/2.0)[:,0];
     suma=np.sum(np.abs(Vals));
-    V=2*Vecs[0,:]*np.diag(Vals)/suma;
-    scat=ax.quiver( mu[0,0]*np.ones((3,)),
-                  mu[1,0]*np.ones((3,)),
-                  mu[2,0]*np.ones((3,)),
-                  8*V[0,:],
-                  8*V[1,:],
-                  8*V[2,:],
-                  length=0.5, normalize=False,color='black')
+    V=Vecs@np.diag(Vals)/suma;
+    
+    scat=ax.quiver(   mu[0]*np.ones((3,)),
+                      mu[1]*np.ones((3,)),
+                      mu[2]*np.ones((3,)),
+                      4*V[0,:],
+                      4*V[1,:],
+                      4*V[2,:],
+                      length=0.5, normalize=False,color='black')
 
     ax.set_xlabel('$X_1$')
     ax.set_ylabel('$X_2$')
@@ -49,6 +50,8 @@ def create_frame2(  x1,x2,mu1,mu2,Vecs,Vals,
     #plt.gca().set_aspect('equal')
 
     return scat;
+
+
 
 ################################################################################
 
@@ -74,3 +77,19 @@ def func_animate(x1,x2,mu1,mu2,Vecs,Vals,function_plot,Ntot):
                                   repeat=True,
                                   interval=50);
     return ani
+
+################################################################################
+
+def plot_points_1D(r1_0,r2_0):
+    plt.figure().clear()
+    fig = plt.figure()
+    line1=plt.scatter(r1_0, -0.1*np.ones(r1_0.shape),c='blue' ,marker='o',label='$x_1$')
+    line2=plt.scatter(r2_0, +0.1*np.ones(r1_0.shape),c='red',marker='s',label='$x_2$')
+
+    plt.grid()
+    ax = plt.gca()
+    ax.legend(handles=[line1, line2],loc='center left', bbox_to_anchor=(1, 0.5))
+    ax.set_aspect(1.)
+    #ax.axes.xaxis.set_ticklabels([])
+    ax.axes.yaxis.set_ticklabels([])
+    plt.show()
